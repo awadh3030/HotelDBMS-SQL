@@ -9,6 +9,7 @@ public class javasqlserver1 {
                 "trustServerCertificate=true";
         String user = "sa";
         String pass = "root";
+        
 Scanner scanner = new Scanner(System.in);
 System.out.println("Enter id: ");
 Integer id = scanner.nextInt();
@@ -23,12 +24,14 @@ String date1 = scanner.next();
 System.out.println("is_Active: ");
 boolean active = scanner.nextBoolean();
 
+
  Connection con = null;
         try {
 Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 DriverManager.registerDriver(driver);
             con = DriverManager.getConnection(url, user, pass);
  Statement st = con.createStatement();
+ 
  
  String sql = "CREATE TABLE Hotels (id INT PRIMARY KEY IDENTITY, " +
 		 "hotel_name VARCHAR(255) NOT NULL, " +
@@ -38,15 +41,19 @@ DriverManager.registerDriver(driver);
 		"is_Active BIT NOT NULL)";
  
  
+ 
  String sql0 = "insert into Hotels values('" + id
 + "'," + name + ",'" + location + ",'" + date +",'" + date1+"'+,'" + active+"' )";
+ 
 Integer m = st.executeUpdate(sql0);
+
             if (m >= 1) {
 System.out.println("inserted successfully : " + sql);
 } else {
 System.out.println("insertion failed");
 }
             String sql1 = "Select * from Table_1";
+            
 ResultSet resultSet = st.executeQuery(sql1);
              while (resultSet.next()) {
             	 System.out.println(resultSet.getString("id"));
@@ -56,6 +63,7 @@ ResultSet resultSet = st.executeQuery(sql1);
             	 System.out.println(resultSet.getString("date1"));
             	 System.out.println(resultSet.getString("active"));
 }
+             
             con.close();
 } catch (Exception ex) {
 System.err.println(ex);
