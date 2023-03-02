@@ -76,8 +76,21 @@ public class javasqlserver1 {
 	        
 	        
 	        
+	        		 String sql02= "CREATE TABLE Room ("
+	    	        		 +"id Integer Primary Key,"
+	    	        		 + "room_type_name String not null,"
+	    	        		 + "created_date VARCHAR(250), "
+	    	        		 + "hotel_id Integer Foriegn key, "
+	    	        		 + "updated_date VARCHAR(250), "
+	    	        		 + "is_Active BIT NOT NULL)";
+	    	        
+	    	        
+	    	        		 st.executeUpdate(sql02);
 	        
-	        
+	    	        		 
+	    	        		 
+	    	        		 
+	        		 
 	        
 	        
 	        String sql0 = "INSERT INTO Hotels (id, hotel_name, hotel_location, created_date, updated_date, is_Active) VALUES('" + id
