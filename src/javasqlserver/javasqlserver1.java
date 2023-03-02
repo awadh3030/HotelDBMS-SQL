@@ -28,6 +28,22 @@ public class javasqlserver1 {
 	    boolean active = scanner.nextBoolean();
 	    
 	    
+	    //room
+//	    System.out.println("Enter id: ");
+//	    Integer id = scanner.nextInt();
+//	    System.out.println("Enter hotel name: ");
+//	    String roomtypename = scanner.next();
+//	    System.out.println("Enter created date: ");
+//	    String date = scanner.next();
+//	    System.out.println("Enter updated date: ");
+//	    String date1 = scanner.next();
+//	    System.out.println("is_Active: ");
+//	    boolean active = scanner.nextBoolean();
+//	    
+	    
+	    
+	    
+	    
 	    Connection con = null;
 	    try {
 	        Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
@@ -36,22 +52,27 @@ public class javasqlserver1 {
 	        Statement st = con.createStatement();
 	        
    
-		        //String sql = "CREATE TABLE Hotels (id INT PRIMARY KEY , " +
-		           //      "hotel_name VARCHAR(255) NOT NULL, " +
-		            //     "hotel_location VARCHAR(255), " +
-		             //    "created_date VARCHAR(255) NOT NULL, " +
-		               //  "updated_date VARCHAR(255), " +
-		               //  "is_Active BIT NOT NULL)";
+		        String sql = "CREATE TABLE Hotels (id INT PRIMARY KEY , " +
+		                 "hotel_name VARCHAR(255) NOT NULL, " +
+		                 "hotel_location VARCHAR(255), " +
+		                 "created_date VARCHAR(255) NOT NULL, " +
+		                 "updated_date VARCHAR(255), " +
+		                 "is_Active BIT NOT NULL)";
 	        
-	      // st.executeUpdate(sql);
+	       st.executeUpdate(sql);
 	        	        
+	       
+	       
+	        String sql01= "CREATE TABLE Room_Type ("
+	        		 +"id Integer Primary Key,"
+	        		 + "room_type_name String not null,"
+	        		 + "created_date VARCHAR(250), "
+	        		 + "updated_date VARCHAR(250), "
+	        		 + "is_Active BIT NOT NULL)";
 	        
-	        String sql01= "CREATE TABLE Room_Type (" +"id Integer Primary Key," +
-	        "room_type_name String not null," + "created_date VARCHAR(250), "+ 
-	        		"updated_date VARCHAR(250), "+ "is_Active BIT NOT NULL)";
-	        	
-	        st.executeUpdate(sql01);
 	        
+	        		 st.executeUpdate(sql01);
+	       
 	        
 	        
 	        
@@ -81,8 +102,8 @@ public class javasqlserver1 {
 	            System.out.println(resultSet.getString("updated_date"));
 	            System.out.println(resultSet.getString("is_Active"));
 	        }
-
 	        
+
 	        con.close();
 	    } catch (Exception ex) {
 	        System.err.println(ex);
