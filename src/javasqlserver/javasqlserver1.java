@@ -7,6 +7,8 @@ public class javasqlserver1 {
 	            "databaseName=HotelDBMS;" +
 	            "encrypt=true;" +
 	            "trustServerCertificate=true";
+	    
+	    
 	    String user = "sa";
 	    String pass = "root";
 	    
@@ -24,7 +26,8 @@ public class javasqlserver1 {
 	    String date1 = scanner.next();
 	    System.out.println("is_Active: ");
 	    boolean active = scanner.nextBoolean();
-
+	    
+	    
 	    Connection con = null;
 	    try {
 	        Driver driver = (Driver) Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
@@ -41,7 +44,21 @@ public class javasqlserver1 {
 		               //  "is_Active BIT NOT NULL)";
 	        
 	      // st.executeUpdate(sql);
-
+	        	        
+	        
+	        String sql01= "CREATE TABLE Room_Type (" +"id Integer Primary Key," +
+	        "room_type_name String not null," + "created_date VARCHAR(250), "+ 
+	        		"updated_date VARCHAR(250), "+ "is_Active BIT NOT NULL)";
+	        	
+	        st.executeUpdate(sql01);
+	        
+	        
+	        
+	        
+	        
+	        
+	        
+	        
 	        String sql0 = "INSERT INTO Hotels (id, hotel_name, hotel_location, created_date, updated_date, is_Active) VALUES('" + id
 	            + "','" + name + "','" + location + "','" + date + "','" + date1 + "','" + active + "')";
 
@@ -65,6 +82,7 @@ public class javasqlserver1 {
 	            System.out.println(resultSet.getString("is_Active"));
 	        }
 
+	        
 	        con.close();
 	    } catch (Exception ex) {
 	        System.err.println(ex);
