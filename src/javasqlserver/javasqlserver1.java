@@ -76,17 +76,72 @@ public class javasqlserver1 {
 	        
 	        
 	        
-	        		 String sql02= "CREATE TABLE Room ("
-	    	        		 +"id Integer Primary Key,"
-	    	        		 + "room_type_name String not null,"
-	    	        		 + "created_date VARCHAR(250), "
-	    	        		 + "hotel_id Integer Foriegn key, "
-	    	        		 + "updated_date VARCHAR(250), "
-	    	        		 + "is_Active BIT NOT NULL)";
+	        		 String sql02=  "CREATE TABLE Rooms ("
+	        				 + " id INTEGER PRIMARY KEY,"
+	        				 + " room_type_id INTEGER REFERENCES Room_Type(id),"
+	        				 + " hotel_id INTEGER REFERENCES Hotels(id),"
+	        				 + " created_date VARCHAR(255) NOT NULL,"
+	        				 + " updated_date VARCHAR(255),"
+	        				 + " is_active BIT NOT NULL"
+	        				 + ")";
 	    	        
 	    	        
 	    	        		 st.executeUpdate(sql02);
+	    	        		 
+	    	        		 
+	    	        		 
+	    	        		 
+	    	        		 
+	    	        		 
+	    	        		 String sql03= " CREATE TABLE Guests ("
+	    	        		 + " id INTEGER PRIMARY KEY,"
+	    	        		 + " guest_name TEXT NOT NULL,"
+	    	        		 + " guest_phone TEXT NOT NULL,"
+	    	        		 + " guest_accompanying_members INTEGER NOT NULL,"
+	    	        		 + " guest_payment_amount INTEGER NOT NULL,"
+	    	        		 + " room_id INTEGER REFERENCES Rooms(id),"
+	    	        		 + " hotel_id INTEGER REFERENCES Hotels(id),"
+	    	        		 + " created_date VARCHAR(255) NOT NULL,"
+	    	        		 + " updated_date VARCHAR(255),"
+	    	        		 + " is_active BIT NOT NULL"
+	    	        		 + ")";
+	    	        		 
+	    	        		 
+	    	        		 st.executeUpdate(sql03);
+	    	        		 
+	    	        		 
+	    	        		 
+	    	        		 String sql04=" CREATE TABLE Employee_Type ("
+	    	        		 + " id INTEGER PRIMARY KEY,"
+	    	        		 + " employee_type_name TEXT NOT NULL,"
+	    	        		 + " created_date VARCHAR(255) NOT NULL,"
+	    	        		 + " updated_date VARCHAR(255),"
+	    	        		 + " is_active BIT NOT NULL"
+	    	        		 + ")";
+	    	        		 
+	    	        		 
+	    	        				 st.executeUpdate(sql04);
+	    	        		 
 	        
+	    	        				 
+	    	        				 
+	    	        				 
+	    	        				 
+	    	        				 String sql05= " CREATE TABLE Employees (\r\n"
+	    	        				 + " id INTEGER PRIMARY KEY,"
+	    	        				 + " employee_name TEXT NOT NULL,"
+	    	        				 + " employee_phone TEXT NOT NULL,"
+	    	        				 + " employee_type_id INTEGER REFERENCES Employee_Type(id),"
+	    	        				 + " room_id INTEGER REFERENCES Rooms(id),"
+	    	        				 + " created_date VARCHAR(255) NOT NULL,"
+	    	        				 + " updated_date VARCHAR(255),"
+	    	        				 + " is_active BIT NOT NULL"
+	    	        				 + ")";
+	    	        				 
+	    	        				 
+	    	        				 
+	    	        				 
+	    	        				 st.executeUpdate(sql05);
 	    	        		 
 	    	        		 
 	    	        		 
